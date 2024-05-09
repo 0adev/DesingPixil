@@ -815,7 +815,13 @@ main .more-benefits p {
   }
 }
 
-@media (max-width: 32rem) {
+/* @media (max-width: 36rem) {
+  main .companies {
+    padding-block-start: 24rem;
+  }
+} */
+
+@media (max-width: 36rem) {
   /* *hero */
   .hero-gallery .second-image.move-down {
     top: 10rem;
@@ -823,7 +829,7 @@ main .more-benefits p {
 
   /* *main */
   main .companies {
-    padding-block-start: 30rem;
+    padding-block-start: 28rem;
   }
 
   main .benefits .heading {
@@ -839,8 +845,8 @@ main .more-benefits p {
 
   /* buttons */
   .hero .button {
-    font-size: 0.625rem;
-    padding: 1.4rem 1.875rem;
+    font-size: 0.875rem;
+    padding: 1.4rem 2rem;
   }
 }
 
