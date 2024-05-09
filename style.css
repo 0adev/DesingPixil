@@ -789,6 +789,14 @@ main .benefits .third-benefit p {
   main .companies {
     padding-block-start: 30rem;
   }
+
+  /* buttons */
+  .hero .button {
+    font-size: var(--fs-100);
+    font-weight: var(--fw-extra-bold);
+    padding: 1.4rem 1.875rem;
+    transition: box-shadow 150ms ease-out;
+  }
 }
 
 @media (max-width: 26rem) {
