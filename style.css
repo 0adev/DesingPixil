@@ -168,7 +168,7 @@ body {
   min-height: calc(100% - 10rem);
   display: grid;
   place-items: start center;
-  background: url(./images/hero-bg.png);
+  background: url(images/hero-bg.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
