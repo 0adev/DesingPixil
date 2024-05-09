@@ -168,7 +168,7 @@ body {
   min-height: calc(100% - 10rem);
   display: grid;
   place-items: start center;
-  background: url(/images/hero-bg.png);
+  background: url(./images/hero-bg.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -407,7 +407,6 @@ main .benefits > .container {
   place-items: center;
   gap: 5rem;
   margin-block-start: 8rem;
-  /* margin-inline: 5rem; */
 }
 
 main .benefits span {
