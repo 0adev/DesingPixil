@@ -778,6 +778,7 @@ main .benefits .third-benefit p {
 
   /* buttons */
   .hero .button {
+    font-size: 0.875rem;
     padding: 1.4rem 1.875rem;
   }
 }
