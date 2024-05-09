@@ -775,17 +775,17 @@ main .benefits .third-benefit p {
   main .companies {
     padding-block-start: 36rem;
   }
-
-  /* buttons */
-  .hero .button {
-    font-size: 0.625;
-    padding: 1.4rem 1.875rem;
-  }
 }
 
 @media (max-width: 32rem) {
   main .companies {
     padding-block-start: 30rem;
+  }
+
+  /* buttons */
+  .hero .button {
+    font-size: 0.625rem;
+    padding: 1.4rem 1.875rem;
   }
 }
 
