@@ -1,0 +1,804 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.4;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+:root {
+  /* colors */
+  --dark-900: #000;
+  --blue: #0000ee;
+  --gray-600: #666666;
+  --light-green: #a3d6b4;
+  --pink: #e42d75;
+  --light-pink: #f3b5b7;
+  --white-200: #f8f8f8;
+  --white: #fff;
+  --dark-800: #1b1b1b;
+  --dark-700: #2f2f2f;
+  --gray-200: #c2c2c2;
+  --gray-100: #ebebeb;
+  --gray-400: #7d7d7d;
+
+  /* font family */
+  --primary-ff: "Raleway", sans-serif;
+
+  /* font size 38px, 24px 18px, 16px, 14px */
+  --fs-800: 3.875em;
+  --fs-700: 2.375rem;
+  --fs-600: 2rem;
+  --fs-500: 1.5rem;
+  --fs-400: 1.25rem;
+  --fs-300: 1.125rem;
+  --fs-200: 1rem;
+  --fs-100: 0.875rem;
+
+  /* font weight */
+  --fw-extra-light: 100;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-extra-bold: 800;
+}
+
+/* utilities */
+.dark-700 {
+  color: var(--dark-700);
+}
+.dark-800 {
+  color: var(--dark-800);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+/* General Styles */
+
+html {
+  -moz-scroll-behavior: smooth;
+  -ms-scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: var(--primary-ff);
+  position: relative;
+}
+
+/* wrapper */
+.wrapper {
+  width: inherit;
+  min-height: calc(100% - 10rem);
+  display: grid;
+  place-items: start center;
+  background: url(/images/hero-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* !Header styles */
+
+.primary-header {
+  width: 100%;
+  transition: 500ms ease;
+}
+
+.primary-header > .container {
+  display: grid;
+  place-items: center;
+  margin-block-start: 1.5rem;
+}
+
+/* logo */
+
+.primary-header img {
+  width: 10rem;
+}
+
+/* humberger menu */
+.primary-header .hamburger-menu {
+  cursor: pointer;
+  display: none;
+}
+
+.primary-header .hamburger-menu i {
+  color: var(--dark-800);
+  font-size: calc(var(--fs-500) - 0.25rem);
+}
+
+/* navigation list */
+.primary-header .primary-navigation {
+  background-color: var(--white);
+  border-radius: 25px;
+  position: fixed;
+  bottom: 2rem;
+  box-shadow: 0 0.15rem 0.25rem var(--gray-100);
+  z-index: 999;
+}
+
+.primary-header .nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.875rem;
+  padding: 1.5rem 1.25rem;
+}
+
+.primary-header .nav-list a:not(.button) {
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-300);
+  color: var(--dark-700);
+  transition: color 150ms ease;
+  text-decoration: none;
+}
+
+.nav-list .close {
+  cursor: pointer;
+  color: var(--dark-700);
+  font-size: var(--fs-100);
+  font-weight: var(--fw-regular);
+  display: none;
+  transition: 150ms ease;
+}
+
+/* !Hero Section */
+
+.hero {
+  margin-block-start: 4rem;
+}
+
+.hero > .container {
+  display: grid;
+  place-items: center;
+  gap: 2.5rem;
+  padding-inline: 2.5rem;
+  position: relative;
+}
+
+.hero .primary-heading {
+  width: 28ch;
+  font-size: clamp(var(--fs-600), 4.5vw, var(--fs-800));
+  font-weight: var(--fw-bold);
+  text-wrap: initial;
+  line-height: 1.2;
+}
+
+.hero p {
+  width: 33ch;
+  font-size: clamp(var(--fs-200), 2vw, var(--fs-300));
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+}
+
+.hero .button {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-extra-bold);
+  padding: 1.4rem 2.875rem;
+  transition: box-shadow 150ms ease-out;
+}
+
+.hero .hero-gallery {
+  width: 100%;
+  height: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1000px;
+}
+
+.hero .hero-gallery img {
+  border-radius: 20px;
+  position: absolute;
+  transition: 850ms ease;
+}
+
+.hero-gallery .first-image {
+  width: 24rem;
+  top: 2.5rem;
+  left: 14rem;
+  z-index: 2;
+}
+
+.hero-gallery .first-image.move-left {
+  width: 24rem;
+  top: 5rem;
+  left: -5rem;
+}
+
+.hero-gallery .second-image {
+  width: 30rem;
+  top: 0;
+  z-index: 3;
+  transform: rotateX(15deg);
+}
+
+.hero-gallery .second-image.rotateX-0 {
+  transform: rotateX(0);
+}
+.hero-gallery .second-image.width-reduce {
+  width: 24rem;
+}
+.hero-gallery .second-image.move-down {
+  top: 5rem;
+}
+
+.hero-gallery .third-image {
+  width: 24rem;
+  top: 2.5rem;
+  right: 14rem;
+  z-index: 2;
+}
+
+.hero-gallery .third-image.move-right {
+  width: 24rem;
+  top: 5rem;
+  right: -5rem;
+}
+
+/* !main: */
+
+main {
+  width: calc(100% - 20rem);
+  margin: 0 auto;
+  background-color: var(--white);
+}
+
+/* companies */
+main .companies {
+  display: grid;
+  place-items: center;
+  gap: 3rem;
+  padding-block: 28rem 4rem;
+  border-bottom: 1px dashed var(--dark-800);
+}
+
+main .companies > h2 {
+  font-size: clamp(var(--fs-200), 2vw, var(--fs-300));
+  color: var(--dark-800);
+  font-weight: var(--fw-medium);
+  text-wrap: balance;
+  text-align: center;
+}
+
+main .companies > .container {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "poshn redazure atomChat pludo"
+    "vocalini slixta tyroFit servi";
+  place-items: center;
+  gap: 1.25rem;
+}
+
+main .companies .poshn {
+  grid-area: poshn;
+}
+main .companies .redazure {
+  grid-area: redazure;
+}
+main .companies .atomChat {
+  grid-area: atomChat;
+}
+main .companies .pludo {
+  grid-area: pludo;
+}
+main .companies .vocalini {
+  grid-area: vocalini;
+}
+main .companies .slixta {
+  grid-area: slixta;
+}
+main .companies .tyroFit {
+  grid-area: tyroFit;
+}
+main .companies .servi {
+  grid-area: servi;
+}
+
+main .companies > .container > img {
+  width: clamp(6rem, 10vw, 7rem);
+  aspect-ratio: 2 / 1;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+}
+
+/* benefits */
+main .benefits > .container {
+  display: grid;
+  place-items: center;
+  gap: 5rem;
+  margin-block-start: 8rem;
+  /* margin-inline: 5rem; */
+}
+
+main .benefits span {
+  font-size: var(--fs-500);
+  font-weight: var(--fw-medium);
+  color: var(--gray-200);
+}
+
+main .benefits h2 {
+  line-height: 1;
+  font-size: clamp(var(--fs-600), 4vw, var(--fs-800));
+  font-weight: var(--fw-bold);
+  color: var(--dark-800);
+}
+
+main .benefits .benefits__content {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "first first second"
+    "third  fourth fourth";
+  gap: 2rem;
+}
+
+main .benefits .first-benefit {
+  grid-area: first;
+}
+
+main .benefits .second-benefit {
+  grid-area: second;
+}
+
+main .benefits .third-benefit {
+  grid-area: third;
+}
+
+main .benefits .fourth-benefit {
+  grid-area: fourth;
+}
+
+main .benefits .card {
+  background-color: var(--gray-100);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+main .benefits .card:first-of-type > img,
+main .benefits .card:last-of-type > img {
+  width: 16rem;
+  justify-self: end;
+}
+
+main .benefits .card:nth-last-of-type(2) > img,
+main .benefits .card:nth-last-of-type(3) > img {
+  width: 12rem;
+  justify-self: center;
+}
+
+main .benefits .first-benefit,
+main .benefits .fourth-benefit {
+  background-image: url(./images/asset\ 12.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+main .benefits .benefits__content h3 {
+  font-size: clamp(var(--fs-500), 1.875vw, var(--fs-600));
+  color: var(--dark-800);
+  font-weight: var(--fw-bold);
+}
+
+main .benefits .benefits__content p {
+  font-size: clamp(var(--fs-100), 1.875vw, var(--fs-300));
+  color: var(--dark-700);
+  font-weight: var(--fw-medium);
+  width: 33ch;
+  /* border: 3px solid red; */
+}
+
+main .benefits .second-benefit p,
+main .benefits .third-benefit p {
+  font-size: clamp(var(--fs-100), 1.875vw, var(--fs-200));
+  color: var(--dark-700);
+  font-weight: var(--fw-medium);
+  width: 26ch;
+}
+
+/* buttons */
+.button {
+  text-decoration: none;
+  color: var(--white-200);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-100);
+  background-color: var(--dark-800);
+  padding: 1rem 1.25rem;
+  border-radius: 15px;
+}
+
+/* Hovring styles */
+.primary-header .nav-list a:not(.button):hover {
+  color: var(--pink);
+}
+
+.hero .button:hover {
+  box-shadow: 0.25rem 0.25rem 0 var(--pink);
+}
+
+.nav-list .close:hover {
+  color: var(--gray-400);
+}
+
+/** media queries */
+@media (max-width: 83rem) {
+  .hero-gallery .first-image {
+    width: 20rem;
+    top: 2.5rem;
+    left: 10rem;
+    z-index: 2;
+  }
+
+  .hero-gallery .first-image.move-left {
+    width: 20rem;
+    top: 5.5rem;
+    left: -0.5rem;
+  }
+
+  .hero-gallery .second-image {
+    width: 28rem;
+    top: 0;
+    transform: rotateX(15deg);
+  }
+
+  .hero-gallery .second-image.rotateX-0 {
+    transform: rotateX(0);
+  }
+  .hero-gallery .second-image.width-reduce {
+    width: 20rem;
+  }
+  .hero-gallery .second-image.move-down {
+    top: 5.5rem;
+  }
+
+  .hero-gallery .third-image {
+    width: 20rem;
+    top: 2.5rem;
+    right: 10rem;
+  }
+
+  .hero-gallery .third-image.move-right {
+    width: 20rem;
+    top: 5.5rem;
+    right: -0.5rem;
+  }
+}
+
+@media (max-width: 78rem) {
+  .hero-gallery .first-image.move-left {
+    left: -1.5rem;
+  }
+
+  .hero-gallery .third-image.move-right {
+    right: -1.5rem;
+  }
+
+  /* *main */
+  /* benefits */
+  main .benefits > .container {
+    margin-inline: 6rem;
+  }
+
+  main .benefits .benefits__content {
+    display: grid;
+    grid-template-areas:
+      "first second"
+      "third fourth";
+  }
+
+  main .benefits .card:first-of-type > img,
+  main .benefits .card:last-of-type > img {
+    justify-self: center;
+  }
+
+  main .benefits .benefits__content p {
+    width: 26ch;
+  }
+
+  main .benefits .second-benefit p,
+  main .benefits .third-benefit p {
+    width: 28ch;
+  }
+}
+
+@media (max-width: 75rem) {
+  .hero .primary-heading {
+    width: fit-content;
+  }
+
+  /* *main */
+  main {
+    width: calc(100% - 8rem);
+  }
+
+  /* buttons */
+}
+
+@media (max-width: 69rem) {
+  /* *main */
+  /* benefits */
+  main .benefits > .container {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 64rem) {
+  .hero-gallery .first-image {
+    width: 20rem;
+    top: 2.5rem;
+    left: 10rem;
+    z-index: 2;
+  }
+
+  .hero-gallery .first-image.move-left {
+    width: 18rem;
+    top: 8rem;
+    left: 0;
+  }
+
+  .hero-gallery .second-image {
+    width: 28rem;
+    top: 0;
+    transform: rotateX(15deg);
+  }
+
+  .hero-gallery .second-image.rotateX-0 {
+    transform: rotateX(0);
+  }
+  .hero-gallery .second-image.width-reduce {
+    width: 24rem;
+  }
+  .hero-gallery .second-image.move-down {
+    top: 5.5rem;
+  }
+
+  .hero-gallery .third-image {
+    width: 20rem;
+    top: 2.5rem;
+    right: 10rem;
+  }
+
+  .hero-gallery .third-image.move-right {
+    width: 18rem;
+    top: 8rem;
+    right: 0;
+  }
+}
+
+@media (max-width: 50rem) {
+  main .companies > .container {
+    width: calc(100% - 4rem);
+    grid-template-areas:
+      "poshn redazure"
+      "atomChat pludo"
+      "vocalini slixta"
+      "tyroFit servi";
+  }
+
+  main .benefits .benefits__content {
+    display: grid;
+    grid-template-areas:
+      "first"
+      "second"
+      "third"
+      "fourth";
+  }
+
+  main .benefits .benefits__content p {
+    width: initial;
+    font-size: var(--fs-200);
+  }
+
+  main .benefits .second-benefit p,
+  main .benefits .third-benefit p {
+    width: initial;
+  }
+}
+
+@media (max-width: 45rem) {
+  /* header */
+  .primary-header {
+    width: 100%;
+  }
+  .primary-header > .container {
+    width: calc(100% - 4rem);
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-block-start: 1.5rem;
+  }
+
+  /* humberger menu */
+  .primary-header .hamburger-menu {
+    display: block;
+  }
+
+  /* navigation */
+  .primary-header .primary-navigation {
+    display: none;
+    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 10rem);
+    height: 30rem;
+    background-color: #ffffff69;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10rem #42424220;
+    opacity: 0;
+  }
+
+  .primary-navigation.mobile-menu {
+    display: block;
+    opacity: 1;
+    transition: 350ms ease;
+  }
+
+  .primary-navigation .nav-list {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .nav-list .close {
+    display: block;
+  }
+
+  /* !hero: */
+  .hero .primary-heading {
+    text-wrap: balance;
+  }
+
+  .hero p {
+    width: fit-content;
+    text-wrap: balance;
+  }
+
+  .first-image,
+  .third-image {
+    display: none;
+  }
+
+  .hero-gallery .second-image {
+    width: 42rem;
+  }
+
+  .hero-gallery .second-image.width-reduce {
+    width: 35rem;
+  }
+  .hero-gallery .second-image.move-down {
+    top: 7rem;
+  }
+
+  /* * main */
+
+  main .companies {
+    padding-block-start: 36rem;
+  }
+
+  /* buttons */
+  .hero .button {
+    font-size: var(--fs-100);
+    font-weight: var(--fw-extra-bold);
+    padding: 1.4rem 2.875rem;
+    transition: box-shadow 150ms ease-out;
+  }
+}
+
+@media (max-width: 32rem) {
+  main .companies {
+    padding-block-start: 30rem;
+  }
+}
+
+@media (max-width: 26rem) {
+  /* *hero */
+  .hero-gallery .second-image {
+    max-width: 21rem;
+  }
+  /* *main */
+  main .companies > .container {
+    width: calc(100% - 2rem);
+  }
+}
