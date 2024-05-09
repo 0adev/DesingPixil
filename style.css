@@ -165,7 +165,7 @@ body {
 /* wrapper */
 .wrapper {
   width: inherit;
-  height: calc(100% - 20rem);
+  height: calc(100% - 38rem);
   min-height: 38rem;
   display: grid;
   place-items: start center;
