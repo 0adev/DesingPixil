@@ -722,7 +722,7 @@ main .benefits .third-benefit p {
     left: 50%;
     transform: translate(-50%, -50%);
     width: calc(100% - 10rem);
-    height: 30rem;
+    min-height: 30rem;
     background-color: #ffffff69;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 10rem #42424220;
