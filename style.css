@@ -165,7 +165,8 @@ body {
 /* wrapper */
 .wrapper {
   width: inherit;
-  min-height: calc(100% - 10rem);
+  height: calc(100% - 20rem);
+  min-height: 38rem;
   display: grid;
   place-items: start center;
   background: url(images/hero-bg.png);
@@ -406,7 +407,7 @@ main .benefits > .container {
   display: grid;
   place-items: center;
   gap: 5rem;
-  margin-block-start: 8rem;
+  padding-block: 8rem;
 }
 
 main .benefits span {
@@ -475,18 +476,17 @@ main .benefits .fourth-benefit {
   background-position: center;
 }
 
-main .benefits .benefits__content h3 {
+main .benefits h3 {
   font-size: clamp(var(--fs-500), 1.875vw, var(--fs-600));
   color: var(--dark-800);
   font-weight: var(--fw-bold);
 }
 
-main .benefits .benefits__content p {
+main .benefits p {
   font-size: clamp(var(--fs-100), 1.875vw, var(--fs-300));
   color: var(--dark-700);
   font-weight: var(--fw-medium);
   width: 33ch;
-  /* border: 3px solid red; */
 }
 
 main .benefits .second-benefit p,
@@ -495,6 +495,33 @@ main .benefits .third-benefit p {
   color: var(--dark-700);
   font-weight: var(--fw-medium);
   width: 26ch;
+}
+
+/* more benefits */
+main .benefits .more-benefits {
+  width: 100%;
+}
+
+main .more-benefits > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+main .more-benefits > .container > * {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 0.875rem;
+}
+
+main .more-benefits img {
+  max-width: 4rem;
+}
+
+main .more-benefits p {
+  width: 40ch;
 }
 
 /* buttons */
@@ -527,12 +554,11 @@ main .benefits .third-benefit p {
     width: 20rem;
     top: 2.5rem;
     left: 10rem;
-    z-index: 2;
   }
 
   .hero-gallery .first-image.move-left {
     width: 20rem;
-    top: 5.5rem;
+    top: 9rem;
     left: -0.5rem;
   }
 
@@ -549,7 +575,7 @@ main .benefits .third-benefit p {
     width: 20rem;
   }
   .hero-gallery .second-image.move-down {
-    top: 5.5rem;
+    top: 9rem;
   }
 
   .hero-gallery .third-image {
@@ -560,7 +586,7 @@ main .benefits .third-benefit p {
 
   .hero-gallery .third-image.move-right {
     width: 20rem;
-    top: 5.5rem;
+    top: 9rem;
     right: -0.5rem;
   }
 }
@@ -600,6 +626,15 @@ main .benefits .third-benefit p {
   main .benefits .third-benefit p {
     width: 28ch;
   }
+
+  /* more benefits */
+  main .more-benefits > .container {
+    gap: 2.5rem;
+  }
+
+  main .more-benefits p {
+    width: 100%;
+  }
 }
 
 @media (max-width: 75rem) {
@@ -633,7 +668,7 @@ main .benefits .third-benefit p {
 
   .hero-gallery .first-image.move-left {
     width: 18rem;
-    top: 8rem;
+    top: 11rem;
     left: 0;
   }
 
@@ -649,9 +684,6 @@ main .benefits .third-benefit p {
   .hero-gallery .second-image.width-reduce {
     width: 24rem;
   }
-  .hero-gallery .second-image.move-down {
-    top: 5.5rem;
-  }
 
   .hero-gallery .third-image {
     width: 20rem;
@@ -661,7 +693,7 @@ main .benefits .third-benefit p {
 
   .hero-gallery .third-image.move-right {
     width: 18rem;
-    top: 8rem;
+    top: 11rem;
     right: 0;
   }
 }
@@ -685,7 +717,8 @@ main .benefits .third-benefit p {
       "fourth";
   }
 
-  main .benefits .benefits__content p {
+  main .benefits .benefits__content p,
+  main .more-benefits p {
     width: initial;
     font-size: var(--fs-200);
   }
@@ -693,6 +726,10 @@ main .benefits .third-benefit p {
   main .benefits .second-benefit p,
   main .benefits .third-benefit p {
     width: initial;
+  }
+  /* more benefits */
+  main .more-benefits > .container {
+    flex-wrap: wrap;
   }
 }
 
@@ -766,6 +803,7 @@ main .benefits .third-benefit p {
   .hero-gallery .second-image.width-reduce {
     width: 35rem;
   }
+
   .hero-gallery .second-image.move-down {
     top: 7rem;
   }
@@ -778,8 +816,25 @@ main .benefits .third-benefit p {
 }
 
 @media (max-width: 32rem) {
+  /* *hero */
+  .hero-gallery .second-image.move-down {
+    top: 10rem;
+  }
+
+  /* *main */
   main .companies {
     padding-block-start: 30rem;
+  }
+
+  main .benefits .heading {
+    text-align: center;
+  }
+
+  main .benefits span {
+    font-size: var(--fs-400);
+  }
+  main .benefits h2 {
+    font-size: var(--fs-500);
   }
 
   /* buttons */
@@ -792,7 +847,11 @@ main .benefits .third-benefit p {
 @media (max-width: 26rem) {
   /* *hero */
   .hero-gallery .second-image {
-    max-width: 21rem;
+    max-width: 18rem;
+  }
+
+  .hero-gallery .second-image.width-reduce {
+    width: 100%;
   }
   /* *main */
   main .companies > .container {
