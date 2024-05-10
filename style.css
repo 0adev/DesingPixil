@@ -454,6 +454,7 @@ main .benefits .card {
   padding: 2rem;
   display: grid;
   gap: 1.5rem;
+  overflow: hidden;
 }
 
 main .benefits .card:first-of-type > img,
@@ -514,6 +515,7 @@ main .more-benefits > .container > * {
   display: grid;
   place-items: center;
   gap: 0.875rem;
+  overflow: hidden;
 }
 
 main .more-benefits img {
@@ -522,6 +524,44 @@ main .more-benefits img {
 
 main .more-benefits p {
   width: 40ch;
+}
+
+/* benefits image animation */
+main .first-benefit img,
+main .third-benefit img {
+  transform: translateX(1000px);
+  opacity: 0;
+  transition: 600ms ease;
+}
+
+main .second-benefit img,
+main .fourth-benefit img {
+  transform: translateX(-1000px);
+  opacity: 0;
+  transition: 600ms ease;
+}
+
+main .first-benefit img.move-rtl,
+main .third-benefit img.move-rtl {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+main .second-benefit img.move-ltr,
+main .fourth-benefit img.move-ltr {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+main .more-benefits img {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: 800ms ease;
+}
+
+main .more-benefits img.move-btt {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* buttons */
@@ -814,12 +854,6 @@ main .more-benefits p {
     padding-block-start: 36rem;
   }
 }
-
-/* @media (max-width: 36rem) {
-  main .companies {
-    padding-block-start: 24rem;
-  }
-} */
 
 @media (max-width: 36rem) {
   /* *hero */
