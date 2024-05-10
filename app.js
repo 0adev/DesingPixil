@@ -82,37 +82,37 @@ const imageAnimation = () => {
   }
 
   function sixthImageAnimation() {
-    if (window.scrollY > 2824) {
+    if (window.scrollY > 2724) {
       benefitsSixthImg.classList.add("move-btt");
     }
   }
 
   function fifthImageAnimation() {
-    if (window.scrollY > 2634) {
+    if (window.scrollY > 2534) {
       benefitsFifthImg.classList.add("move-btt");
     }
   }
 
   function fourthImageAnimation() {
-    if (window.scrollY > 2226) {
+    if (window.scrollY > 2126) {
       benefitsFourthImg.classList.add("move-ltr");
     }
   }
 
   function thirdImageAnimation() {
-    if (window.scrollY > 1836) {
+    if (window.scrollY > 1736) {
       benefitsThirdImg.classList.add("move-rtl");
     }
   }
 
   function secondImageAnimation() {
-    if (window.scrollY > 1420) {
+    if (window.scrollY > 1320) {
       benefitsSecondImg.classList.add("move-ltr");
     }
   }
 
   function firstImageAnimation() {
-    if (window.scrollY > 1070) {
+    if (window.scrollY > 970) {
       benefitsFirstImg.classList.add("move-rtl");
     }
   }
