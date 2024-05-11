@@ -680,20 +680,20 @@ main .process .second-column p {
 }
 
 main .process .first-step {
-  background-image: url(/images/asset\ 20.png);
+  background-image: url(./images/asset\ 20.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 main .process .second-step {
-  background-image: url(/images/asset\ 22.png);
+  background-image: url(./images/asset\ 22.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 main .process .third-step {
-  background-image: url(/images/asset\ 24.png);
+  background-image: url(./images/asset\ 24.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -712,7 +712,7 @@ main .process .testimonial > .container {
   gap: 3rem;
   border: 1px dotted var(--gray-400);
   border-radius: 15px;
-  background-image: url(/images/asset\ 26.png);
+  background-image: url(./images/asset\ 26.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
