@@ -147,6 +147,10 @@ textarea:not([rows]) {
   grid-column: span 2;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* General Styles */
 
 html {
@@ -338,9 +342,15 @@ body {
 /* !main: */
 
 main {
+  width: 100%;
+  background-color: var(--white);
+  height: 500vh;
+}
+
+/* Ppplied the styles to the direct children of .container that do not have the class .process-work */
+main > .container > *:not(.process-work) {
   width: calc(100% - 20rem);
   margin: 0 auto;
-  background-color: var(--white);
 }
 
 /* companies */
@@ -407,20 +417,24 @@ main .benefits > .container {
   display: grid;
   place-items: center;
   gap: 5rem;
-  padding-block: 8rem;
+  padding-block: 8rem 10rem;
 }
 
 main .benefits span {
   font-size: var(--fs-500);
   font-weight: var(--fw-medium);
   color: var(--gray-200);
+  line-height: 1;
 }
 
 main .benefits h2 {
-  line-height: 1;
+  display: grid;
   font-size: clamp(var(--fs-600), 4vw, var(--fs-800));
   font-weight: var(--fw-bold);
   color: var(--dark-800);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: 600ms ease;
 }
 
 main .benefits .benefits__content {
@@ -526,7 +540,12 @@ main .more-benefits p {
   width: 40ch;
 }
 
-/* benefits image animation */
+/* benefits animation */
+main .benefits h2.move-btt {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 main .first-benefit img,
 main .third-benefit img {
   transform: translateX(1000px);
@@ -564,6 +583,200 @@ main .more-benefits img.move-btt {
   opacity: 1;
 }
 
+/* Process & Work Section */
+main .process-work {
+  width: 100%;
+  background-color: var(--dark-700);
+}
+
+main .process-work .container {
+  width: calc(100% - 20rem);
+  margin: 0 auto;
+}
+
+main .process-work .container > * > * {
+  width: 100%;
+}
+
+main .process > .container {
+  width: 100%;
+  padding-block: 10rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 4rem;
+}
+
+/* process first column */
+main .process .first-column {
+  display: grid;
+  gap: 2.5rem;
+  align-self: start;
+}
+
+main .process h2 {
+  display: grid;
+  color: var(--white);
+  font-size: clamp(var(--fs-600), 4vw, var(--fs-800));
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+main .process h2 > span {
+  color: var(--gray-200);
+  font-size: var(--fs-600);
+  font-weight: var(--fw-bold);
+  line-height: 1.5;
+}
+
+main .process p {
+  font-size: clamp(var(--fs-100), 1.875vw, var(--fs-300));
+  color: var(--white);
+  font-weight: var(--fw-medium);
+}
+
+main .process .button {
+  width: fit-content;
+  font-size: var(--fs-200);
+  font-weight: var(--fw-extra-bold);
+  color: var(--dark-900);
+  background-color: var(--white);
+  border: 1px solid var(--dark-800);
+  padding: 1.5rem 3rem;
+  transition: 200ms ease;
+}
+
+/* process second column */
+main .process .second-column {
+  display: grid;
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+main .process .second-column > .card {
+  border-radius: 15px;
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+  transform: rotateX(30deg) scale(0.5);
+  box-shadow: 0 0.5rem 5rem var(--gray-200);
+  transition: 500ms ease;
+}
+
+main .process .second-column img {
+  width: 3rem;
+}
+
+main .process .second-column h3 {
+  font-size: clamp(var(--fs-500), 1.875vw, var(--fs-600));
+  color: var(--dark-800);
+  font-weight: var(--fw-bold);
+}
+
+main .process .second-column p {
+  font-size: clamp(var(--fs-100), 1.875vw, var(--fs-300));
+  color: var(--dark-700);
+  font-weight: var(--fw-medium);
+  width: 40ch;
+}
+
+main .process .first-step {
+  background-image: url(/images/asset\ 20.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main .process .second-step {
+  background-image: url(/images/asset\ 22.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .process .third-step {
+  background-image: url(/images/asset\ 24.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* process testimonial */
+main .process .testimonial {
+  width: 100%;
+  padding-block-end: 10rem;
+}
+
+main .process .testimonial > .container {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 3rem;
+  border: 1px dotted var(--gray-400);
+  border-radius: 15px;
+  background-image: url(/images/asset\ 26.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 8rem;
+}
+
+/* company logo */
+main .testimonial .company-logo img {
+  width: 8rem;
+}
+
+/* testimenial content */
+main .testimonial .comment-content {
+  display: flex;
+  position: relative;
+}
+
+main .testimonial .comment-content img {
+  width: 2rem;
+  z-index: 1;
+  position: absolute;
+  left: 0.5rem;
+}
+
+main .testimonial .comment-content p {
+  font-size: clamp(var(--fs-400), 3vw, var(--fs-500));
+  font-weight: var(--fw-bold);
+  text-align: center;
+  z-index: 2;
+  width: 50ch;
+}
+
+/* company prisedent */
+main .testimonial .company-president {
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  gap: 0.875rem;
+}
+
+main .testimonial .company-president img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+main .testimonial .company-president h3 {
+  color: var(--white);
+  font-weight: var(--fw-bold);
+  font-size: clamp(var(--fs-100), 1.5vw, var(--fs-200));
+}
+
+main .testimonial .company-president span {
+  color: var(--gray-400);
+  font-size: var(--fs-100);
+  font-weight: var(--fw-bold);
+  width: 100%;
+}
+
+/* Process and Work Animation */
+main .process .second-column > .card.scale-up {
+  transform: rotateX(0) scale(1);
+  box-shadow: none;
+}
+
 /* buttons */
 .button {
   text-decoration: none;
@@ -580,7 +793,7 @@ main .more-benefits img.move-btt {
   color: var(--pink);
 }
 
-.hero .button:hover {
+.button:hover {
   box-shadow: 0.25rem 0.25rem 0 var(--pink);
 }
 
@@ -675,6 +888,14 @@ main .more-benefits img.move-btt {
   main .more-benefits p {
     width: 100%;
   }
+
+  /* process testimonial */
+  main .process .testimonial > .container {
+    padding-inline: 1rem;
+  }
+  main .testimonial .comment-content p {
+    width: 100%;
+  }
 }
 
 @media (max-width: 75rem) {
@@ -683,8 +904,18 @@ main .more-benefits img.move-btt {
   }
 
   /* *main */
-  main {
+  main > .container > *:not(.process-work) {
     width: calc(100% - 8rem);
+  }
+
+  /* Process And Work Section*/
+  main .process-work .container {
+    width: calc(100% - 8rem);
+  }
+
+  /* process second column */
+  main .process .second-column p {
+    width: 100%;
   }
 
   /* buttons */
@@ -735,6 +966,16 @@ main .more-benefits img.move-btt {
     width: 18rem;
     top: 11rem;
     right: 0;
+  }
+
+  /* Process And Work Section*/
+  main .process-work .container {
+    width: calc(100% - 4rem);
+  }
+
+  /* process second column */
+  main .process .second-column > .card {
+    padding: 1.5rem;
   }
 }
 
@@ -849,7 +1090,11 @@ main .more-benefits img.move-btt {
   }
 
   /* * main */
+  main > .container > *:not(.process-work) {
+    width: calc(100% - 4rem);
+  }
 
+  /* companies */
   main .companies {
     padding-block-start: 36rem;
   }
@@ -862,10 +1107,12 @@ main .more-benefits img.move-btt {
   }
 
   /* *main */
+  /* companies */
   main .companies {
     padding-block-start: 28rem;
   }
 
+  /* benefits */
   main .benefits .heading {
     text-align: center;
   }
@@ -875,6 +1122,11 @@ main .more-benefits img.move-btt {
   }
   main .benefits h2 {
     font-size: var(--fs-500);
+  }
+
+  /* Process And Work Section*/
+  main .process-work .container {
+    width: calc(100% - 2rem);
   }
 
   /* buttons */
@@ -896,5 +1148,9 @@ main .more-benefits img.move-btt {
   /* *main */
   main .companies > .container {
     width: calc(100% - 2rem);
+  }
+  /* process testimonial */
+  main .testimonial .comment-content p {
+    text-wrap: balance;
   }
 }
