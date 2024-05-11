@@ -173,10 +173,6 @@ const cardsAnimation = () => {
         processCards[1].classList.add("scale-up");
       } else if (scrollThreshold >= 3680) {
         processCards[0].classList.add("scale-up");
-      } else {
-        processCards.forEach((card) => {
-          card.classList.remove("scale-up");
-        });
       }
     }
   }
