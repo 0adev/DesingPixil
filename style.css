@@ -183,10 +183,9 @@ body {
 
 .primary-header {
   width: 100%;
-  transition: 500ms ease;
 }
 
-.primary-header > .container {
+.primary-header > .header-container {
   display: grid;
   place-items: center;
   margin-block-start: 1.5rem;
@@ -611,6 +610,9 @@ main .process .first-column {
   display: grid;
   gap: 2.5rem;
   align-self: start;
+  transform: translateY(300px);
+  opacity: 0;
+  transition: 600ms ease;
 }
 
 main .process h2 {
@@ -732,7 +734,6 @@ main .testimonial .comment-content {
 
 main .testimonial .comment-content img {
   width: 2rem;
-  z-index: 1;
   position: absolute;
   left: 0.5rem;
 }
@@ -741,8 +742,8 @@ main .testimonial .comment-content p {
   font-size: clamp(var(--fs-400), 3vw, var(--fs-500));
   font-weight: var(--fw-bold);
   text-align: center;
-  z-index: 2;
   width: 50ch;
+  z-index: 0;
 }
 
 /* company prisedent */
@@ -772,6 +773,11 @@ main .testimonial .company-president span {
 }
 
 /* Process and Work Animation */
+main .process .first-column.move-btt {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 main .process .second-column > .card.scale-up {
   transform: rotateX(0) scale(1);
   box-shadow: none;
@@ -1019,12 +1025,25 @@ main .process .second-column > .card.scale-up {
   .primary-header {
     width: 100%;
   }
-  .primary-header > .container {
+  .primary-header > .header-container {
     width: calc(100% - 4rem);
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
-    margin-block-start: 1.5rem;
+    margin-block: 1rem;
+  }
+
+  .primary-header.opacity-0 {
+    opacity: 0;
+  }
+  .primary-header.fixed-header {
+    position: fixed;
+    top: 0;
+    background-color: #ffffffde;
+    backdrop-filter: blur(8px);
+    opacity: 1;
+    z-index: 999;
+    transition: 400ms ease;
   }
 
   /* humberger menu */
@@ -1045,6 +1064,12 @@ main .process .second-column > .card.scale-up {
     backdrop-filter: blur(30px);
     box-shadow: 0 0 10rem #42424220;
     opacity: 0;
+  }
+
+  .primary-header .primary-navigation.move-down {
+    top: 29rem;
+    background-color: var(--white-200);
+    transition: none;
   }
 
   .primary-navigation.mobile-menu {
