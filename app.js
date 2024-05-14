@@ -27,6 +27,10 @@ const processCards = [
 // first-column contains the h2, p, a.button in .precess section
 const processFirstColumn = document.querySelector(".process .first-column");
 
+// main => work
+const sectionHeading = document.querySelector(".works .section-heading");
+const worksGallery = document.querySelectorAll(".works .image");
+
 // ===================================================================== //
 
 const openMenu = () => {
@@ -41,11 +45,15 @@ const openMenu = () => {
 };
 
 const webPageAnimation = () => {
+  const screenwidth = window.innerWidth;
+  const largeScreenMin = 800;
+  const largeScreenMax = 1524;
+  let smallScreenMax = 796;
+  const scrollThreshold = window.scrollY;
+
   // Handle gallery scroll animation
   const galleryScroll = () => {
-    const scrollThreshold = 120;
-
-    if (window.scrollY > scrollThreshold) {
+    if (scrollThreshold > 120) {
       heroImages[0].classList.add("move-left");
       heroImages[1].classList.add("rotateX-0", "width-reduce", "move-down");
       heroImages[2].classList.add("move-right");
@@ -64,9 +72,7 @@ const webPageAnimation = () => {
 
   // fixed header on small screens
   const fixedHeader = () => {
-    const screenwidth = window.innerWidth;
-    const smallScreenMax = 720;
-    const scrollThreshold = window.scrollY;
+    smallScreenMax = 720;
 
     if (screenwidth <= smallScreenMax) {
       if (scrollThreshold > 1400) {
@@ -88,74 +94,67 @@ const webPageAnimation = () => {
     const benefitsFourthImg = benefitsImgs[3];
     const benefitsFifthImg = benefitsImgs[4];
     const benefitsSixthImg = benefitsImgs[5];
-    console.log(window.scrollY);
 
-    const screenwidth = window.innerWidth;
-    const largeScreenMin = 800;
-    const largeScreenMax = 1524;
-    const smallScreenMax = 796;
-
-    // console.log(window.scrollY);
-    function benefitsHeadingAnimation(scrollThreshold) {
-      if (window.scrollY > scrollThreshold) {
+    function benefitsHeadingAnimation(scrollY) {
+      if (scrollThreshold > scrollY) {
         benefitsHeading.classList.add("move-btt");
       }
     }
 
     function firstColumnsAnimation() {
-      if (window.scrollY > 940) {
+      if (scrollThreshold > 940) {
         benefitsFirstImg.classList.add("move-rtl");
         benefitsSecondImg.classList.add("move-ltr");
       }
     }
 
     function secondColumnsAnimation() {
-      if (window.scrollY > 1400) {
+      if (scrollThreshold > 1400) {
         benefitsThirdImg.classList.add("move-rtl");
         benefitsFourthImg.classList.add("move-ltr");
       }
     }
 
     function lastColumnsAnimation() {
-      if (window.scrollY > 1850) {
+      if (scrollThreshold > 1850) {
         benefitsFifthImg.classList.add("move-btt");
         benefitsSixthImg.classList.add("move-btt");
-      }
-    }
-
-    function sixthImageAnimation() {
-      if (window.scrollY > 2724) {
-        benefitsSixthImg.classList.add("move-btt");
-      }
-    }
-
-    function fifthImageAnimation() {
-      if (window.scrollY > 2534) {
-        benefitsFifthImg.classList.add("move-btt");
-      }
-    }
-
-    function fourthImageAnimation() {
-      if (window.scrollY > 2126) {
-        benefitsFourthImg.classList.add("move-ltr");
-      }
-    }
-
-    function thirdImageAnimation() {
-      if (window.scrollY > 1690) {
-        benefitsThirdImg.classList.add("move-rtl");
-      }
-    }
-
-    function secondImageAnimation() {
-      if (window.scrollY > 1270) {
-        benefitsSecondImg.classList.add("move-ltr");
       }
     }
 
     function firstImageAnimation() {
-      if (window.scrollY > 820) {
+      if (scrollThreshold > 820) {
         benefitsFirstImg.classList.add("move-rtl");
+      }
+    }
+
+    function secondImageAnimation() {
+      if (scrollThreshold > 1270) {
+        benefitsSecondImg.classList.add("move-ltr");
+      }
+    }
+
+    function thirdImageAnimation() {
+      if (scrollThreshold > 1690) {
+        benefitsThirdImg.classList.add("move-rtl");
+      }
+    }
+
+    function fourthImageAnimation() {
+      if (scrollThreshold > 2126) {
+        benefitsFourthImg.classList.add("move-ltr");
+      }
+    }
+
+    function fifthImageAnimation() {
+      if (scrollThreshold > 2534) {
+        benefitsFifthImg.classList.add("move-btt");
+      }
+    }
+
+    function sixthImageAnimation() {
+      if (scrollThreshold > 2724) {
+        benefitsSixthImg.classList.add("move-btt");
       }
     }
 
@@ -185,13 +184,6 @@ const webPageAnimation = () => {
   };
 
   const processAnimation = () => {
-    const screenwidth = window.innerWidth;
-    const largeScreenMin = 800;
-    const largeScreenMax = 1524;
-    const smallScreenMax = 796;
-
-    let scrollThreshold = window.scrollY;
-
     function smallScreens() {
       if (screenwidth <= smallScreenMax) {
         if (scrollThreshold >= 4225) {
@@ -228,10 +220,114 @@ const webPageAnimation = () => {
     largeScreens();
   };
 
+  const worksAnimation = () => {
+    const firstImage = worksGallery[0];
+    const secondImage = worksGallery[1];
+    const thirdImage = worksGallery[2];
+    const fourthImage = worksGallery[3];
+    const fifthImage = worksGallery[4];
+    const sixthImage = worksGallery[5];
+    const seventhImage = worksGallery[6];
+
+    function worksHeading(scrollY) {
+      if (scrollThreshold > scrollY) {
+        sectionHeading.classList.add("move-btt");
+      }
+      console.log(scrollThreshold);
+    }
+
+    function galleryColumns() {
+      function galleryFirstColumn() {
+        const firstColumn = [firstImage, secondImage];
+        if (scrollThreshold > 3680) {
+          firstColumn.forEach((element) => element.classList.add("scale-up"));
+        }
+      }
+
+      function gallerySecondColumn() {
+        const secondColumn = [thirdImage, fourthImage, fifthImage];
+        if (scrollThreshold > 4116) {
+          secondColumn.forEach((element) => element.classList.add("scale-up"));
+        }
+      }
+
+      function galleryThirdColumn() {
+        const thirdColumn = [sixthImage, seventhImage];
+        if (scrollThreshold > 4536) {
+          thirdColumn.forEach((element) => element.classList.add("scale-up"));
+        }
+      }
+
+      galleryFirstColumn();
+      gallerySecondColumn();
+      galleryThirdColumn();
+    }
+
+    function galleryFirstImage() {
+      if (scrollThreshold > 5450) {
+        firstImage.classList.add("scale-up");
+      }
+    }
+    function gallerySecondImage() {
+      if (scrollThreshold > 5800) {
+        secondImage.classList.add("scale-up");
+      }
+    }
+    function galleryThirdImage() {
+      if (scrollThreshold > 6200) {
+        thirdImage.classList.add("scale-up");
+      }
+    }
+    function galleryFourthImage() {
+      if (scrollThreshold > 6600) {
+        fourthImage.classList.add("scale-up");
+      }
+    }
+    function galleryFifthImage() {
+      if (scrollThreshold > 7000) {
+        fifthImage.classList.add("scale-up");
+      }
+    }
+    function gallerySixthImage() {
+      if (scrollThreshold > 7400) {
+        sixthImage.classList.add("scale-up");
+      }
+    }
+    function gallerySeventhImage() {
+      if (scrollThreshold > 7800) {
+        seventhImage.classList.add("scale-up");
+      }
+    }
+
+    function largeScreens() {
+      if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
+        worksHeading(3325);
+        galleryColumns();
+      }
+    }
+
+    function smallScreens() {
+      if (screenwidth <= smallScreenMax) {
+        worksHeading(4975);
+        galleryFirstImage();
+        gallerySecondImage();
+        galleryThirdImage();
+        galleryFourthImage();
+        galleryFifthImage();
+        gallerySixthImage();
+        gallerySeventhImage();
+      }
+    }
+
+    largeScreens();
+    smallScreens();
+  };
+
   galleryScroll();
   fixedHeader();
   benefitsAnimation();
   processAnimation();
+  worksAnimation();
 };
 
 const init = () => {

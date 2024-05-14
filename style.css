@@ -607,9 +607,6 @@ main .process .first-column {
   display: grid;
   gap: 2.5rem;
   align-self: start;
-  transform: translateY(300px);
-  opacity: 0;
-  transition: 600ms ease;
 }
 
 main .process-work h2 {
@@ -648,7 +645,6 @@ main .process-work .button {
 main .process .second-column {
   display: grid;
   gap: 2rem;
-  perspective: 1000px;
 }
 
 main .process .second-column > .card {
@@ -775,7 +771,7 @@ main .works .container {
   padding-block: 4rem 10rem;
 }
 
-main .works .introduction {
+main .works .section-heading {
   width: 100%;
   display: grid;
   gap: 2.5rem;
@@ -797,6 +793,9 @@ main .works .gallery > * {
   height: 23rem;
   border-radius: 15px;
   overflow: hidden;
+  transform: scale(0.6);
+  box-shadow: 0 0.5rem 5rem var(--gray-200);
+  transition: 500ms ease;
 }
 
 main .works .gallery .grifik {
@@ -809,14 +808,14 @@ main .works .gallery .grifik {
 main .works .gallery .poshn {
   grid-area: poshn;
   background-image: url(images/asset\ 31.png);
-  background-position: start;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 main .works .gallery .redazure {
   grid-area: redazure;
   background-image: url(images/asset\ 33.png);
-  background-position: start;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -830,14 +829,14 @@ main .works .gallery .masbot {
 main .works .gallery .mindu {
   grid-area: mindu;
   background-image: url(images/asset\ 35.png);
-  background-position: start;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
 main .works .gallery .vocalini {
   grid-area: vocalini;
   background-image: url(images/asset\ 36.png);
-  background-position: start;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -856,13 +855,20 @@ main .works .gallery img {
 }
 
 /* Process and Work Animation */
-main .process .first-column.move-btt {
+main .process-work .section-heading {
+  transform: translateY(300px);
+  opacity: 0;
+  transition: 600ms ease;
+}
+
+main .process-work .section-heading.move-btt {
   transform: translateY(0);
   opacity: 1;
 }
 
-main .process .second-column > .card.scale-up {
-  transform: rotateX(0) scale(1);
+main .process .second-column > .card.scale-up,
+main .works .gallery > .image.scale-up {
+  transform: scale(1);
   box-shadow: none;
 }
 
