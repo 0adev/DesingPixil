@@ -15,7 +15,7 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   scroll-behavior: smooth;
-  scroll-padding: 2rem;
+  /* scroll-padding: 2rem; */
 }
 
 /* Remove default margin in favour of better control in authored CSS */
@@ -596,7 +596,7 @@ main .process-work .container > * > * {
 
 main .process > .container {
   width: 100%;
-  padding-block: 8rem;
+  padding-block: 6rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 4rem;
@@ -772,7 +772,7 @@ main .testimonial .company-president span {
 /* works */
 main .works .container {
   width: 100%;
-  padding-block-end: 10rem;
+  padding-block: 4rem 10rem;
 }
 
 main .works .introduction {
