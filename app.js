@@ -31,7 +31,10 @@ const processFirstColumn = document.querySelector(".process .first-column");
 const sectionHeading = document.querySelector(".works .section-heading");
 const worksGallery = document.querySelectorAll(".works .image");
 
-// ===================================================================== //
+// main => plans :
+const planHeading = document.querySelector(".plans .section-heading");
+
+//===================================================================== //
 
 const openMenu = () => {
   navList.classList.add("mobile-menu");
@@ -322,11 +325,35 @@ const webPageAnimation = () => {
     smallScreens();
   };
 
+  const plansAnimation = () => {
+    function plansHeadingAnimation(scrollY) {
+      if (scrollThreshold > scrollY) {
+        planHeading.classList.add("move-btt");
+        console.log(scrollThreshold);
+      }
+    }
+
+    function largeScreens() {
+      if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
+        plansHeadingAnimation(4885);
+      }
+    }
+    function smallScreens() {
+      if (screenwidth <= smallScreenMax) {
+        plansHeadingAnimation(7313);
+      }
+    }
+
+    largeScreens();
+    smallScreens();
+  };
+
   galleryScroll();
   fixedHeader();
   benefitsAnimation();
   processAnimation();
   worksAnimation();
+  plansAnimation();
 };
 
 const init = () => {
