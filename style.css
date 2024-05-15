@@ -1178,7 +1178,8 @@ main .testimonials .ceo-founder .brand img {
   border-radius: 10px;
 }
 /* Process and Work Animation */
-main .section-heading {
+main .process-work .section-heading,
+main .plans .section-heading {
   transform: translateY(300px);
   opacity: 0;
   transition: 600ms ease;
