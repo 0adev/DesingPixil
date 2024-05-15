@@ -233,27 +233,26 @@ const webPageAnimation = () => {
       if (scrollThreshold > scrollY) {
         sectionHeading.classList.add("move-btt");
       }
-      console.log(scrollThreshold);
     }
 
     function galleryColumns() {
       function galleryFirstColumn() {
         const firstColumn = [firstImage, secondImage];
-        if (scrollThreshold > 3680) {
+        if (scrollThreshold > 4029) {
           firstColumn.forEach((element) => element.classList.add("scale-up"));
         }
       }
 
       function gallerySecondColumn() {
         const secondColumn = [thirdImage, fourthImage, fifthImage];
-        if (scrollThreshold > 4116) {
+        if (scrollThreshold > 4445) {
           secondColumn.forEach((element) => element.classList.add("scale-up"));
         }
       }
 
       function galleryThirdColumn() {
         const thirdColumn = [sixthImage, seventhImage];
-        if (scrollThreshold > 4536) {
+        if (scrollThreshold > 4837) {
           thirdColumn.forEach((element) => element.classList.add("scale-up"));
         }
       }
@@ -301,7 +300,7 @@ const webPageAnimation = () => {
 
     function largeScreens() {
       if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
-        worksHeading(3325);
+        worksHeading(3680);
         galleryColumns();
       }
     }
