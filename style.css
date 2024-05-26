@@ -1142,20 +1142,20 @@ main .testimonials .profile {
 }
 
 main .testimonials .profile img {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 }
 
 main .testimonials .testimonial .profile h4 {
   display: grid;
-  font-size: var(--fs-200);
+  font-size: var(--fs-300);
   color: var(--dark-800);
 }
 
 main .testimonials .testimonial .profile span {
   place-self: start;
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
   color: var(--gray-400);
   opacity: 0.6;
 }
