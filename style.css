@@ -1088,7 +1088,7 @@ main .plans .testimonials h3 {
 main .testimonials .testimonial-slider {
   width: 100%;
   max-width: 900px;
-  height: 400px;
+  height: 500px;
   display: grid;
   place-items: center;
   background-image: url(images/asset\ 40.png);
@@ -1111,7 +1111,7 @@ main .testimonials .testimonial.active {
 }
 
 main .testimonials .testimonial p {
-  font-size: clamp(var(--fs-300), 2.5vw, var(--fs-500));
+  font-size: clamp(var(--fs-400), 2.5vw, var(--fs-500));
   font-weight: var(--fw-bold);
   color: var(--dark-800);
   line-height: 1.2;
@@ -1175,8 +1175,8 @@ main .testimonials .controls {
 }
 
 main .testimonials .controls button {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background-color: var(--gray-200);
   border: none;
   border-radius: 50%;
@@ -1674,19 +1674,6 @@ main .works .gallery > .image.scale-up {
     padding-inline: 0;
   }
 
-  main .testimonials .profile img {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  main .testimonials .testimonial .profile h4 {
-    font-size: var(--fs-100);
-  }
-
-  main .testimonials .testimonial .profile span {
-    font-size: calc(var(--fs-100) - 0.1rem);
-  }
-
   main .testimonials .brand img {
     width: 6rem;
   }
@@ -1712,7 +1699,7 @@ main .works .gallery > .image.scale-up {
     width: calc(100% - 2rem);
   }
   /* process testimonial */
-  main .testimonial .comment-content p {
+  main .process .testimonial .comment-content p {
     text-wrap: balance;
   }
 
@@ -1720,5 +1707,13 @@ main .works .gallery > .image.scale-up {
   main .plans .plan p {
     text-wrap: balance;
     font-size: var(--fs-200);
+  }
+
+  /* plans testimoials */
+  main .testimonials .testimonial-slider {
+    height: 600px;
+  }
+  main .testimonials .controls {
+    width: calc(100% - 1rem);
   }
 }
