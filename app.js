@@ -39,6 +39,9 @@ const nextButton = document.querySelector(".next");
 let currentIndex = 0;
 const intervalTime = 15000; // 15 seconds
 
+// main => FAQs
+const questions = document.querySelectorAll(".question");
+
 //===================================================================== //
 
 const openMenu = () => {
@@ -402,6 +405,24 @@ const testimonialSlider = () => {
 };
 
 testimonialSlider();
+
+// FAQs / Question toggle
+questions.forEach((question) => {
+  const showAnswers = () => {
+    const answer = question.querySelector("p"); // Select the <p> inside the question
+    const icon = question.querySelector("h3 > img"); // Select the <img> inside the <h3> within the question
+
+    if (answer.classList.contains("d-block")) {
+      answer.classList.remove("d-block");
+      icon.classList.remove("rotate-135");
+    } else {
+      answer.classList.add("d-block");
+      icon.classList.add("rotate-135");
+    }
+  };
+
+  question.addEventListener("click", showAnswers);
+});
 
 const init = () => {
   // Event listener for hamburger menu click
