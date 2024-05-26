@@ -1091,7 +1091,7 @@ main .testimonials .testimonial-slider {
   height: 400px;
   display: grid;
   place-items: center;
-  background-image: url(/images/asset\ 40.png);
+  background-image: url(images/asset\ 40.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1111,7 +1111,7 @@ main .testimonials .testimonial.active {
 }
 
 main .testimonials .testimonial p {
-  font-size: clamp(var(--fs-200), 2.5vw, var(--fs-500));
+  font-size: clamp(var(--fs-300), 2.5vw, var(--fs-500));
   font-weight: var(--fw-bold);
   color: var(--dark-800);
   line-height: 1.2;
@@ -1125,7 +1125,7 @@ main .testimonials .testimonial p::before {
   content: "";
   width: clamp(var(--fs-500), 3vw, var(--fs-600));
   height: clamp(var(--fs-500), 3vw, var(--fs-600));
-  background-image: url(/images/asset\ 28.png);
+  background-image: url(images/asset\ 28.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
