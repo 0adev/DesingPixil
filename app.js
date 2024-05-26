@@ -32,7 +32,12 @@ const sectionHeading = document.querySelector(".works .section-heading");
 const worksGallery = document.querySelectorAll(".works .image");
 
 // main => plans :
-const planHeading = document.querySelector(".plans .section-heading");
+const planHeading = document.querySelectorAll(".plans .section-heading > *");
+const testimonials = document.querySelectorAll(".plans .testimonial");
+const prevButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+let currentIndex = 0;
+const intervalTime = 15000; // 15 seconds
 
 //===================================================================== //
 
@@ -47,7 +52,7 @@ const openMenu = () => {
   closeNavList.addEventListener("click", closeMenu);
 };
 
-const webPageAnimation = () => {
+const webPageScrollAnimation = () => {
   const screenwidth = window.innerWidth;
   const largeScreenMin = 800;
   const largeScreenMax = 1524;
@@ -328,14 +333,15 @@ const webPageAnimation = () => {
   const plansAnimation = () => {
     function plansHeadingAnimation(scrollY) {
       if (scrollThreshold > scrollY) {
-        planHeading.classList.add("move-btt");
-        console.log(scrollThreshold);
+        planHeading.forEach((element) => {
+          element.classList.add("move-btt");
+        });
       }
     }
 
     function largeScreens() {
       if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
-        plansHeadingAnimation(4885);
+        plansHeadingAnimation(4900);
       }
     }
     function smallScreens() {
@@ -356,11 +362,52 @@ const webPageAnimation = () => {
   plansAnimation();
 };
 
+const testimonialSlider = () => {
+  // Function to show testimonial based on current index
+  function showTestimonial(index) {
+    // Hide all testimonials
+    testimonials.forEach(function (testimonial) {
+      testimonial.classList.remove("active");
+    });
+    // Show the selected testimonial
+    testimonials[index].classList.add("active");
+  }
+
+  // Function for the next button
+  function nextTestimonial() {
+    // Update the index to the next testimonial
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    // Show the new testimonial
+    showTestimonial(currentIndex);
+  }
+
+  // Function for the previous button
+  function prevTestimonial() {
+    // Update the index to the previous testimonial
+    currentIndex =
+      (currentIndex - 1 + testimonials.length) % testimonials.length;
+    // Show the new testimonial
+    showTestimonial(currentIndex);
+  }
+
+  // Add event listeners to buttons
+  nextButton.addEventListener("click", nextTestimonial);
+  prevButton.addEventListener("click", prevTestimonial);
+
+  // Initially show the first testimonial
+  showTestimonial(currentIndex);
+
+  // Automatically move to the next testimonial every 15 seconds
+  setInterval(nextTestimonial, intervalTime);
+};
+
+testimonialSlider();
+
 const init = () => {
   // Event listener for hamburger menu click
   hamburgerMenu.addEventListener("click", openMenu);
   // Event listener for most web page content to add some animation when the page starts scrolling
-  window.addEventListener("scroll", webPageAnimation);
+  window.addEventListener("scroll", webPageScrollAnimation);
 };
 
 init();
