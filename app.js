@@ -40,7 +40,9 @@ let currentIndex = 0;
 const intervalTime = 15000; // 15 seconds
 
 // main => FAQs
-const questions = document.querySelectorAll(".question");
+const faqs = document.querySelector(".faqs");
+const questions = faqs.querySelectorAll(".question");
+const faqsHeading = faqs.querySelector(".heading");
 
 //===================================================================== //
 
@@ -57,10 +59,36 @@ const openMenu = () => {
 
 const webPageScrollAnimation = () => {
   const screenwidth = window.innerWidth;
-  const largeScreenMin = 800;
+  let largeScreenMin = 800;
   const largeScreenMax = 1524;
   let smallScreenMax = 796;
   const scrollThreshold = window.scrollY;
+
+  // remove navigation list when the user is in footer section
+  const removeNavList = () => {
+    largeScreenMin = 720;
+    function removeNavigation(scrollY) {
+      if (scrollThreshold > scrollY) {
+        navList.classList.add("opacity-0");
+      } else {
+        navList.classList.remove("opacity-0");
+      }
+    }
+
+    function largeScreens() {
+      if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
+        removeNavigation(8400);
+      }
+    }
+    function smallScreens() {
+      if (screenwidth <= 799) {
+        removeNavigation(12205);
+      }
+    }
+
+    largeScreens();
+    smallScreens();
+  };
 
   // Handle gallery scroll animation
   const galleryScroll = () => {
@@ -344,12 +372,12 @@ const webPageScrollAnimation = () => {
 
     function largeScreens() {
       if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
-        plansHeadingAnimation(4900);
+        plansHeadingAnimation(5260);
       }
     }
     function smallScreens() {
       if (screenwidth <= smallScreenMax) {
-        plansHeadingAnimation(7313);
+        plansHeadingAnimation(8030);
       }
     }
 
@@ -357,12 +385,37 @@ const webPageScrollAnimation = () => {
     smallScreens();
   };
 
+  // FAQs Animation Scroll
+  const faqsAnimation = () => {
+    function faqsHeadingAnimation(scrollY) {
+      if (scrollThreshold > scrollY) {
+        faqsHeading.classList.add("move-btt");
+      }
+    }
+
+    function largeScreens() {
+      if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
+        faqsHeadingAnimation(7410);
+      }
+    }
+    function smallScreens() {
+      if (screenwidth <= smallScreenMax) {
+        faqsHeadingAnimation(11763);
+      }
+    }
+
+    largeScreens();
+    smallScreens();
+  };
+
+  removeNavList();
   galleryScroll();
   fixedHeader();
   benefitsAnimation();
   processAnimation();
   worksAnimation();
   plansAnimation();
+  faqsAnimation();
 };
 
 const testimonialSlider = () => {
@@ -415,9 +468,11 @@ questions.forEach((question) => {
     if (answer.classList.contains("d-block")) {
       answer.classList.remove("d-block");
       icon.classList.remove("rotate-135");
+      question.classList.remove("dark-bg");
     } else {
       answer.classList.add("d-block");
       icon.classList.add("rotate-135");
+      question.classList.add("dark-bg");
     }
   };
 

@@ -214,6 +214,11 @@ body {
   bottom: 2rem;
   box-shadow: 0 0.15rem 0.25rem var(--gray-100);
   z-index: 999;
+  transition: 400ms ease;
+}
+
+.primary-header .primary-navigation.opacity-0 {
+  opacity: 0;
 }
 
 .primary-header .nav-list {
@@ -349,7 +354,6 @@ body {
 main {
   width: 100%;
   background-color: var(--white);
-  height: 500vh;
 }
 
 /* Ppplied the styles to the direct children of .container that do not have the class .process-work */
@@ -1200,7 +1204,7 @@ main .faqs > .container {
   gap: 3rem;
 }
 
-main .faqs h2 {
+main .faqs .heading h2 {
   display: grid;
   color: var(--white-200);
   font-size: clamp(var(--fs-600), 4vw, var(--fs-800));
@@ -1208,7 +1212,7 @@ main .faqs h2 {
   line-height: 1;
 }
 
-main .faqs h2 > span {
+main .faqs .heading h2 > span {
   color: var(--gray-400);
   font-size: var(--fs-600);
   font-weight: var(--fw-bold);
@@ -1260,24 +1264,155 @@ main .faqs .faqs-content p.d-block {
   display: block;
 }
 
-/* Process and Work Animation */
+/* Process, Work, Plans, FAQs Animation */
 main .process-work .section-heading,
-main .plans .section-heading > * {
+main .plans .section-heading > *,
+main .faqs .heading {
   transform: translateY(300px);
   opacity: 0;
   transition: 600ms ease;
 }
 
 main .section-heading.move-btt,
-main .plans .section-heading > *.move-btt {
+main .plans .section-heading > *.move-btt,
+main .faqs .heading.move-btt {
   transform: translateY(0);
   opacity: 1;
+}
+
+main .faqs .faqs-content > .question.dark-bg {
+  background-color: var(--dark-800);
 }
 
 main .process .second-column > .card.scale-up,
 main .works .gallery > .image.scale-up {
   transform: scale(1);
   box-shadow: none;
+}
+
+/* ! Footer Section */
+footer {
+  width: 100%;
+  padding-block: 1.5rem;
+  background-color: var(--white);
+  display: grid;
+  place-items: center;
+}
+
+footer .container {
+  width: calc(100% - 30rem);
+  display: grid;
+  gap: 3rem;
+}
+
+footer .get-started {
+  border: 1px dashed var(--gray-400);
+  padding: 3rem 1.5rem;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+}
+
+footer .get-started h2 {
+  color: var(--dark-800);
+  font-size: clamp(var(--fs-500), 4vw, var(--fs-700));
+  font-weight: var(--fw-bold);
+  text-align: center;
+  text-wrap: wrap;
+}
+
+footer .get-started .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+footer .get-started .buttons button {
+  text-decoration: none;
+  font-weight: var(--fw-bold-2);
+  font-size: var(--fs-200);
+  padding: 1.25rem 2.25rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+footer .get-started .buttons > .started-btn {
+  color: var(--white-200);
+  background-color: var(--dark-800);
+}
+
+footer .get-started .buttons > .chat-btn {
+  color: var(--dark-800);
+  background-color: transparent;
+  border: 1px solid var(--dark-800);
+}
+
+footer .footer-info {
+  display: grid;
+  gap: 3rem;
+}
+
+footer .footer-info .first-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .footer-info .first-part .framer {
+  display: grid;
+  gap: 1.25rem;
+}
+
+footer .footer-info .first-part img {
+  width: 10rem;
+}
+
+footer .footer-info .first-part p {
+  font-size: clamp(var(--fs-300), 2vw, var(--fs-400));
+  font-weight: var(--fw-medium);
+  color: var(--dark-800);
+  width: 40ch;
+}
+
+footer .footer-info .navigation-list {
+  display: grid;
+  justify-items: right;
+}
+
+footer .footer-info .navigation-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 50%);
+  gap: 1.25rem 2rem;
+}
+
+footer .footer-info .navigation-list li {
+  list-style: none;
+}
+
+footer .footer-info .navigation-list a {
+  text-decoration: none;
+  color: var(--dark-800);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-200);
+}
+
+footer .footer-info .second-part {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .footer-info .second-part .social-media {
+  display: flex;
+  gap: 0.5rem;
+}
+
+footer .footer-info .social-media img {
+  width: 1.25rem;
 }
 
 /* buttons */
@@ -1305,7 +1440,8 @@ main .works .gallery > .image.scale-up {
   color: var(--pink);
 }
 
-.button:not(.menu-btn):hover {
+.button:not(.menu-btn):hover,
+footer .buttons > *:hover {
   box-shadow: 0.25rem 0.25rem 0 var(--pink);
 }
 
@@ -1413,6 +1549,11 @@ main .works .gallery > .image.scale-up {
   main .plans .plan > .container {
     padding-inline: 1.5rem;
   }
+
+  /* *Footer Section */
+  footer .container {
+    width: calc(100% - 20rem);
+  }
 }
 
 @media (max-width: 75rem) {
@@ -1453,6 +1594,11 @@ main .works .gallery > .image.scale-up {
   /* benefits */
   main .benefits > .container {
     margin-inline: 0;
+  }
+
+  /* *Footer Section */
+  footer .container {
+    width: calc(100% - 10rem);
   }
 }
 
@@ -1514,6 +1660,15 @@ main .works .gallery > .image.scale-up {
   /* FAQs Section */
   main .faqs > .container {
     width: calc(100% - 10rem);
+  }
+
+  /* *footer section */
+  footer .footer-info .first-part p {
+    width: 100%;
+  }
+
+  footer .footer-info .navigation-list ul {
+    width: calc(100% - 40%);
   }
 }
 
@@ -1612,6 +1767,18 @@ main .works .gallery > .image.scale-up {
   main .plans .plan .plan__heading p {
     font-size: var(--fs-300);
     text-wrap: balance;
+  }
+
+  /* *footer section */
+  footer .footer-info .first-part {
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  footer .footer-info .navigation-list {
+    display: grid;
+    justify-items: initial;
   }
 }
 
@@ -1723,6 +1890,27 @@ main .works .gallery > .image.scale-up {
   main .faqs > .container {
     width: calc(100% - 2rem);
   }
+
+  /* *Footer Section */
+  footer .container {
+    width: calc(100% - 2rem);
+  }
+
+  footer .get-started .buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  footer .get-started .buttons > button {
+    width: inherit;
+    font-size: var(--fs-100);
+  }
+
+  footer .footer-info .first-part p {
+    width: 45ch;
+    text-wrap: wrap;
+  }
 }
 
 @media (max-width: 36rem) {
@@ -1772,6 +1960,11 @@ main .works .gallery > .image.scale-up {
   .hero .button {
     font-size: 0.875rem;
     padding: 1.4rem 2rem;
+  }
+
+  /* *footer section */
+  footer .footer-info .first-part p {
+    width: 100%;
   }
 }
 
