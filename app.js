@@ -1,5 +1,5 @@
-// Define constants for DOM elements
-// header
+//* Define constants for DOM elements
+// Header
 const header = [
   document.querySelector(".primary-header"),
   document.querySelector(".header-container"),
@@ -7,31 +7,21 @@ const header = [
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const navList = document.querySelector(".primary-navigation");
 const closeNavList = document.querySelector(".close");
-// hero
+// Hero
 const heroGallery = document.querySelector(".hero-gallery");
-const heroImages = [
-  document.querySelector(".first-image"),
-  document.querySelector(".second-image"),
-  document.querySelector(".third-image"),
-];
-// main => benefits
+const heroImages = document.querySelectorAll(".hero-gallery img");
+// Benefits
 const benefitsImgs = document.querySelectorAll(".benefits img");
 const benefitsHeading = document.querySelector(".benefits h2");
-// main => process
-const processCards = [
-  document.querySelector(".first-step"),
-  document.querySelector(".second-step"),
-  document.querySelector(".third-step"),
-];
-
-// first-column contains the h2, p, a.button in .precess section
+// Process
+const processCards = document.querySelectorAll(".process .card");
 const processFirstColumn = document.querySelector(".process .first-column");
 
-// main => work
+// Work
 const sectionHeading = document.querySelector(".works .section-heading");
 const worksGallery = document.querySelectorAll(".works .image");
 
-// main => plans :
+// Plans
 const planHeading = document.querySelectorAll(".plans .section-heading > *");
 const testimonials = document.querySelectorAll(".plans .testimonial");
 const prevButton = document.querySelector(".prev");
@@ -39,22 +29,18 @@ const nextButton = document.querySelector(".next");
 let currentIndex = 0;
 const intervalTime = 15000; // 15 seconds
 
-// main => FAQs
+// FAQs
 const faqs = document.querySelector(".faqs");
 const questions = faqs.querySelectorAll(".question");
 const faqsHeading = faqs.querySelector(".heading");
-
-//===================================================================== //
+//* Definition END =================================.
 
 const openMenu = () => {
   navList.classList.add("mobile-menu");
+};
 
-  const closeMenu = () => {
-    navList.classList.remove("mobile-menu");
-  };
-
-  // Event listener for close button click
-  closeNavList.addEventListener("click", closeMenu);
+const closeMenu = () => {
+  navList.classList.remove("mobile-menu");
 };
 
 const webPageScrollAnimation = () => {
@@ -64,9 +50,13 @@ const webPageScrollAnimation = () => {
   let smallScreenMax = 796;
   const scrollThreshold = window.scrollY;
 
-  // remove navigation list when the user is in footer section
+  //* remove navigation list when the user is in footer section
   const removeNavList = () => {
-    largeScreenMin = 720;
+    const smallScreenMin = 720;
+    const smallScreenMax = 799;
+    const scrollThresholdLarge = 8250;
+    const scrollThresholdSmall = 12205;
+
     function removeNavigation(scrollY) {
       if (scrollThreshold > scrollY) {
         navList.classList.add("opacity-0");
@@ -77,12 +67,12 @@ const webPageScrollAnimation = () => {
 
     function largeScreens() {
       if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
-        removeNavigation(8400);
+        removeNavigation(scrollThresholdLarge);
       }
     }
     function smallScreens() {
-      if (screenwidth <= 799) {
-        removeNavigation(12205);
+      if (screenwidth <= smallScreenMax && screenwidth >= smallScreenMin) {
+        removeNavigation(scrollThresholdSmall);
       }
     }
 
@@ -90,34 +80,60 @@ const webPageScrollAnimation = () => {
     smallScreens();
   };
 
-  // Handle gallery scroll animation
+  //* Handle gallery scroll animation
   const galleryScroll = () => {
+    // Function to add classes to an image element
+    const addClasses = (image, classes) => {
+      image.classList.add(...classes);
+    };
+
+    // Function to remove classes from an image element
+    const removeClasses = (image, classes) => {
+      image.classList.remove(...classes);
+    };
+
+    // Object mapping image indices to classes to be added if scrollThreshold > 120
+    const classesToAdd = {
+      0: ["move-left"],
+      1: ["rotateX-0", "width-reduce", "move-down"],
+      2: ["move-right"],
+    };
+
+    // Array containing all classes that are potentially added to the images and need to be removed if scrollThreshold <= 120
+    const classesToRemove = [
+      "move-left",
+      "rotateX-0",
+      "width-reduce",
+      "move-down",
+      "move-right",
+    ];
+
     if (scrollThreshold > 120) {
-      heroImages[0].classList.add("move-left");
-      heroImages[1].classList.add("rotateX-0", "width-reduce", "move-down");
-      heroImages[2].classList.add("move-right");
+      // If true, iterate over each image and add classes specified in classesToAdd
+      heroImages.forEach((image, index) => {
+        if (classesToAdd[index]) {
+          addClasses(image, classesToAdd[index]);
+        }
+      });
     } else {
-      heroImages.forEach((image) =>
-        image.classList.remove(
-          "move-left",
-          "rotateX-0",
-          "width-reduce",
-          "move-down",
-          "move-right"
-        )
-      );
+      // If false, iterate over each image and remove classes specified in classesToRemove
+      heroImages.forEach((image) => {
+        removeClasses(image, classesToRemove);
+      });
     }
   };
 
-  // fixed header on small screens
+  //* fixed header on small screens
   const fixedHeader = () => {
     smallScreenMax = 720;
+    const thresholdToShowFixedHeader = 1400;
+    const thresholdToHideFixedHeader = 1395;
 
     if (screenwidth <= smallScreenMax) {
-      if (scrollThreshold > 1400) {
+      if (scrollThreshold > thresholdToShowFixedHeader) {
         header[0].classList.add("fixed-header");
         navList.classList.add("move-down");
-      } else if (scrollThreshold > 1395) {
+      } else if (scrollThreshold > thresholdToHideFixedHeader) {
         header[0].classList.add("opacity-0");
       } else {
         header[0].classList.remove("fixed-header", "opacity-0");
@@ -126,6 +142,7 @@ const webPageScrollAnimation = () => {
     }
   };
 
+  //*Handle animations for Benefits section
   const benefitsAnimation = () => {
     const benefitsFirstImg = benefitsImgs[0];
     const benefitsSecondImg = benefitsImgs[1];
@@ -140,64 +157,27 @@ const webPageScrollAnimation = () => {
       }
     }
 
-    function firstColumnsAnimation() {
-      if (scrollThreshold > 940) {
-        benefitsFirstImg.classList.add("move-rtl");
-        benefitsSecondImg.classList.add("move-ltr");
-      }
-    }
-
-    function secondColumnsAnimation() {
-      if (scrollThreshold > 1400) {
-        benefitsThirdImg.classList.add("move-rtl");
-        benefitsFourthImg.classList.add("move-ltr");
-      }
-    }
-
-    function lastColumnsAnimation() {
-      if (scrollThreshold > 1850) {
-        benefitsFifthImg.classList.add("move-btt");
-        benefitsSixthImg.classList.add("move-btt");
-      }
-    }
-
-    function firstImageAnimation() {
-      if (scrollThreshold > 820) {
-        benefitsFirstImg.classList.add("move-rtl");
-      }
-    }
-
-    function secondImageAnimation() {
-      if (scrollThreshold > 1270) {
-        benefitsSecondImg.classList.add("move-ltr");
-      }
-    }
-
-    function thirdImageAnimation() {
-      if (scrollThreshold > 1690) {
-        benefitsThirdImg.classList.add("move-rtl");
-      }
-    }
-
-    function fourthImageAnimation() {
-      if (scrollThreshold > 2126) {
-        benefitsFourthImg.classList.add("move-ltr");
-      }
-    }
-
-    function fifthImageAnimation() {
-      if (scrollThreshold > 2534) {
-        benefitsFifthImg.classList.add("move-btt");
-      }
-    }
-
-    function sixthImageAnimation() {
-      if (scrollThreshold > 2724) {
-        benefitsSixthImg.classList.add("move-btt");
-      }
-    }
-
     const largeScreens = () => {
+      function firstColumnsAnimation() {
+        if (scrollThreshold > 940) {
+          benefitsFirstImg.classList.add("move-rtl");
+          benefitsSecondImg.classList.add("move-ltr");
+        }
+      }
+
+      function secondColumnsAnimation() {
+        if (scrollThreshold > 1400) {
+          benefitsThirdImg.classList.add("move-rtl");
+          benefitsFourthImg.classList.add("move-ltr");
+        }
+      }
+
+      function lastColumnsAnimation() {
+        if (scrollThreshold > 1850) {
+          benefitsFifthImg.classList.add("move-btt");
+          benefitsSixthImg.classList.add("move-btt");
+        }
+      }
       if (screenwidth >= largeScreenMin && screenwidth <= largeScreenMax) {
         benefitsHeadingAnimation(680);
         firstColumnsAnimation();
@@ -207,6 +187,41 @@ const webPageScrollAnimation = () => {
     };
 
     const smallScreens = () => {
+      function firstImageAnimation() {
+        if (scrollThreshold > 820) {
+          benefitsFirstImg.classList.add("move-rtl");
+        }
+      }
+
+      function secondImageAnimation() {
+        if (scrollThreshold > 1270) {
+          benefitsSecondImg.classList.add("move-ltr");
+        }
+      }
+
+      function thirdImageAnimation() {
+        if (scrollThreshold > 1690) {
+          benefitsThirdImg.classList.add("move-rtl");
+        }
+      }
+
+      function fourthImageAnimation() {
+        if (scrollThreshold > 2126) {
+          benefitsFourthImg.classList.add("move-ltr");
+        }
+      }
+
+      function fifthImageAnimation() {
+        if (scrollThreshold > 2534) {
+          benefitsFifthImg.classList.add("move-btt");
+        }
+      }
+
+      function sixthImageAnimation() {
+        if (scrollThreshold > 2724) {
+          benefitsSixthImg.classList.add("move-btt");
+        }
+      }
       if (screenwidth <= smallScreenMax) {
         benefitsHeadingAnimation(813);
         firstImageAnimation();
@@ -222,6 +237,7 @@ const webPageScrollAnimation = () => {
     smallScreens();
   };
 
+  //*Handle animations for Process section
   const processAnimation = () => {
     function smallScreens() {
       if (screenwidth <= smallScreenMax) {
@@ -259,6 +275,7 @@ const webPageScrollAnimation = () => {
     largeScreens();
   };
 
+  //*Handle animations for Works section
   const worksAnimation = () => {
     const firstImage = worksGallery[0];
     const secondImage = worksGallery[1];
@@ -361,6 +378,7 @@ const webPageScrollAnimation = () => {
     smallScreens();
   };
 
+  //*Handle animations for Plans section
   const plansAnimation = () => {
     function plansHeadingAnimation(scrollY) {
       if (scrollThreshold > scrollY) {
@@ -385,7 +403,7 @@ const webPageScrollAnimation = () => {
     smallScreens();
   };
 
-  // FAQs Animation Scroll
+  //*Handle animations for FAQs section
   const faqsAnimation = () => {
     function faqsHeadingAnimation(scrollY) {
       if (scrollThreshold > scrollY) {
@@ -418,13 +436,16 @@ const webPageScrollAnimation = () => {
   faqsAnimation();
 };
 
+//* Testimonial Slider
 const testimonialSlider = () => {
+  let autoSlideTimer; // Timer for automatic sliding
+
   // Function to show testimonial based on current index
   function showTestimonial(index) {
     // Hide all testimonials
-    testimonials.forEach(function (testimonial) {
-      testimonial.classList.remove("active");
-    });
+    testimonials.forEach((testimonial) =>
+      testimonial.classList.remove("active")
+    );
     // Show the selected testimonial
     testimonials[index].classList.add("active");
   }
@@ -435,6 +456,8 @@ const testimonialSlider = () => {
     currentIndex = (currentIndex + 1) % testimonials.length;
     // Show the new testimonial
     showTestimonial(currentIndex);
+    // Reset the timer
+    resetAutoSlideTimer();
   }
 
   // Function for the previous button
@@ -444,6 +467,14 @@ const testimonialSlider = () => {
       (currentIndex - 1 + testimonials.length) % testimonials.length;
     // Show the new testimonial
     showTestimonial(currentIndex);
+    // Reset the timer
+    resetAutoSlideTimer();
+  }
+
+  // Function to reset the automatic sliding timer
+  function resetAutoSlideTimer() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(nextTestimonial, intervalTime);
   }
 
   // Add event listeners to buttons
@@ -453,13 +484,14 @@ const testimonialSlider = () => {
   // Initially show the first testimonial
   showTestimonial(currentIndex);
 
-  // Automatically move to the next testimonial every 15 seconds
-  setInterval(nextTestimonial, intervalTime);
+  // Start the automatic sliding timer
+  autoSlideTimer = setInterval(nextTestimonial, intervalTime);
 };
 
+// Initialize testimonial slider
 testimonialSlider();
 
-// FAQs / Question toggle
+//* FAQs / toggle
 questions.forEach((question) => {
   const showAnswers = () => {
     const answer = question.querySelector("p"); // Select the <p> inside the question
@@ -480,9 +512,11 @@ questions.forEach((question) => {
 });
 
 const init = () => {
-  // Event listener for hamburger menu click
+  // Add event listener for the hamburger menu
   hamburgerMenu.addEventListener("click", openMenu);
-  // Event listener for most web page content to add some animation when the page starts scrolling
+  // Add event listener for closing the menu
+  closeNavList.addEventListener("click", closeMenu);
+  // Add event listener for most web page content to add some animation when the page starts scrolling
   window.addEventListener("scroll", webPageScrollAnimation);
 };
 
